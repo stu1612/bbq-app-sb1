@@ -12,7 +12,6 @@ export default function Menu() {
   useEffect(() => {
     async function loadData() {
       const itemsData = await readCollection("Menu/Dishes/content");
-      console.log(itemsData);
       setDishes(itemsData);
       setStatus(1);
     }
@@ -26,7 +25,7 @@ export default function Menu() {
   const Categories = dishes.map((item) => (
     <div key={item.id}>
       <p>{item.title}</p>
-      <Link to={`/menu/${item.id}`}>See more</Link>
+      <Link to={`/menu/${item.title}`}>See more</Link>
     </div>
   ));
 
