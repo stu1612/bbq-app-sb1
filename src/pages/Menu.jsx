@@ -1,6 +1,6 @@
 // npm
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import CategoryItem from "../components/CategoryItem";
 // files
 import { readCollection } from "../firebase/firestore";
 
@@ -22,11 +22,9 @@ export default function Menu() {
   if (status === 0) return <p>Loading ..</p>;
   if (status === 2) return <p>Error ..</p>;
 
+  // components
   const Categories = dishes.map((item) => (
-    <div key={item.id}>
-      <p>{item.title}</p>
-      <Link to={`/menu/${item.title}`}>See more</Link>
-    </div>
+    <CategoryItem key={item.id} item={item} />
   ));
 
   return (

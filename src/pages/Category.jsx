@@ -1,29 +1,28 @@
 // npm
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 // files
 import { readCollection } from "../firebase/firestore";
 
 export default function Category() {
   const [dishes, setDishes] = useState([]);
   const [status, setStatus] = useState(0);
-  const data = useParams();
-  console.log(data);
-
-  const title = "hi";
+  // id target values
+  const { title } = useParams();
+  const location = useLocation();
+  const routeId = location.state.data.id;
 
   // method
   useEffect(() => {
     async function loadData() {
       const itemsData = await readCollection(
-        `Menu/Dishes/content/${title}/content`
+        `Menu/Dishes/content/${routeId}/content`
       );
-      console.log(itemsData);
       setDishes(itemsData);
       setStatus(1);
     }
     loadData();
-  }, [title]);
+  }, [routeId]);
 
   // safeguard
   if (status === 0) return <p>Loading ..</p>;
