@@ -23,9 +23,8 @@ export default function Menu() {
   if (status === 2) return <p>Error ..</p>;
 
   // components
-  const Categories = dishes.map((item) => (
-    <CategoryItem key={item.id} item={item} />
-  ));
+  const Categories =
+    dishes && dishes.map((item) => <CategoryItem key={item.id} item={item} />);
 
   return (
     <section className="menu" id="menu">

@@ -1,5 +1,13 @@
-import React from "react";
+// npm
+import { useLocation, Link } from "react-router-dom";
 
 export default function Product() {
-  return <div>Product</div>;
+  const location = useLocation();
+  const { name } = location.state.data;
+  return (
+    <div>
+      Product - {name}
+      <Link to={-1}>Go back</Link>;
+    </div>
+  );
 }
