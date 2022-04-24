@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import slugify from "../scripts/slugify";
 
 export default function ProductItem({ item }) {
-  const { name, description } = item;
+  const { name, description, imgURL, price } = item;
   const { title } = useParams();
   const [productItem] = useState(item);
 
@@ -17,9 +17,10 @@ export default function ProductItem({ item }) {
   return (
     <div>
       <div>
-        <img src="" alt="" />
+        <img src={imgURL} alt={name} />
       </div>
       <h2>{name}</h2>
+      <p>{price}</p>
       <p>{description}</p>
       <Link to={`/menu/${slugTitle}/${slugName}`} state={{ data: productItem }}>
         see details

@@ -1,5 +1,5 @@
 // npm
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 // pages
 import Home from "./pages/Home";
 import Menu from "./pages/Menu";
@@ -22,6 +22,7 @@ export default function App() {
         <Route path="menu/:title/:name" element={<Product />} />
         <Route path="contact" element={<Contact />} />
         <Route path="admin" element={<Admin />} />
+        <Route path="/*" element={<Navigate replace to="/" />} />
       </Routes>
     </BrowserRouter>
   );

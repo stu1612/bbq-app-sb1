@@ -3,24 +3,29 @@ import { useState, useEffect } from "react";
 import CategoryItem from "../components/CategoryItem";
 // files
 import { readCollection } from "../firebase/firestore";
+// components
+import ErrorMessage from "../components/ErrorMessage";
 
 export default function Menu() {
   const [dishes, setDishes] = useState([]);
   const [status, setStatus] = useState(0);
 
+  const path = "Menu/Dishes/content";
+
   // method
   useEffect(() => {
-    async function loadData() {
-      const itemsData = await readCollection("Menu/Dishes/content");
+    async function loadData(path) {
+      const itemsData = await readCollection(path);
       setDishes(itemsData);
       setStatus(1);
     }
-    loadData();
+    loadData(path);
   }, []);
 
   // safeguard
   if (status === 0) return <p>Loading ..</p>;
   if (status === 2) return <p>Error ..</p>;
+  if (dishes === undefined) return <ErrorMessage />;
 
   // components
   const Categories =
