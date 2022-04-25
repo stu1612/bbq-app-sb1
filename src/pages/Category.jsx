@@ -10,7 +10,8 @@ import Loader from "../components/Loader";
 export default function Category() {
   const [dishes, setDishes] = useState([]);
   const [status, setStatus] = useState(0);
-  // id target values
+
+  // Properties - id target values
   const { title } = useParams();
   const location = useLocation();
   const routeId = location.state.data.id;

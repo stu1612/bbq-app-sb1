@@ -11,6 +11,7 @@ export default function Menu() {
   const [dishes, setDishes] = useState([]);
   const [status, setStatus] = useState(0);
 
+  // properties
   const path = "Menu/Dishes/content";
 
   // method

@@ -9,7 +9,7 @@ export default function CategoryItem({ item }) {
   const { title, description, imgURL } = item;
   const [categoryItem] = useState(item);
 
-  // methods
+  // properties
   const slugTitle = slugify(title);
   const shortDescription = trimmedString(description);
 

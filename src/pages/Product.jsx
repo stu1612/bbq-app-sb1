@@ -2,6 +2,7 @@
 import { useLocation, Link } from "react-router-dom";
 
 export default function Product() {
+  // properties
   const location = useLocation();
   const { name, imgURL, description, recipe, price } = location.state.data;
 

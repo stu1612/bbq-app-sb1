@@ -7,10 +7,10 @@ import slugify from "../scripts/slugify";
 
 export default function ProductItem({ item }) {
   const { name, description, imgURL, price } = item;
-  const { title } = useParams();
   const [productItem] = useState(item);
 
-  // methods
+  // Properties
+  const { title } = useParams();
   const slugTitle = slugify(title);
   const slugName = slugify(name);
 
