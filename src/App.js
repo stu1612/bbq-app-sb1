@@ -7,6 +7,8 @@ import Category from "./pages/Category";
 import Product from "./pages/Product";
 import Contact from "./pages/Contact";
 import Admin from "./pages/Admin";
+import AdminCategory from "./pages/AdminCategory";
+import AdminProduct from "./pages/AdminProduct";
 // components
 import Navigation from "./components/Navigation";
 
@@ -21,7 +23,10 @@ export default function App() {
 
         <Route path="menu/:title/:name" element={<Product />} />
         <Route path="contact" element={<Contact />} />
-        <Route path="admin" element={<Admin />} />
+        <Route path="admin" element={<Admin />}>
+          <Route path="categoryForm" element={<AdminCategory />} />
+          <Route path="productForm" element={<AdminProduct />} />
+        </Route>
         <Route path="/*" element={<Navigate replace to="/" />} />
       </Routes>
     </BrowserRouter>
