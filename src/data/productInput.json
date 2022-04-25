@@ -21,11 +21,39 @@
     "min": 1,
     "max": 9999
   },
-  "recipe": {
+  "recipe_1": {
     "autoFocus": false,
-    "label": "List of product items",
-    "placeholder": "Ex: Chicken, BBQ sauce, cucumber",
-    "required": true,
+    "label": "Ingredient 1",
+    "placeholder": "Ex: Chicken",
+    "required": false,
+    "type": "text"
+  },
+  "recipe_2": {
+    "autoFocus": false,
+    "label": "Ingredient 2",
+    "placeholder": "Ex: Chips",
+    "required": false,
+    "type": "text"
+  },
+  "recipe_3": {
+    "autoFocus": false,
+    "label": "Ingredient 3",
+    "placeholder": "Ex: BBQ sauce",
+    "required": false,
+    "type": "text"
+  },
+  "recipe_4": {
+    "autoFocus": false,
+    "label": "Ingredient 4",
+    "placeholder": "Ex: Salad",
+    "required": false,
+    "type": "text"
+  },
+  "recipe_5": {
+    "autoFocus": false,
+    "label": "Ingredient 5",
+    "placeholder": "Ex: Coleslaw",
+    "required": false,
     "type": "text"
   }
 }

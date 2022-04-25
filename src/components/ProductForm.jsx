@@ -16,7 +16,11 @@ export default function ProductForm() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("0");
-  const [recipe, setRecipe] = useState([]);
+  const [recipe_1, setRecipe_1] = useState("");
+  const [recipe_2, setRecipe_2] = useState("");
+  const [recipe_3, setRecipe_3] = useState("");
+  const [recipe_4, setRecipe_4] = useState("");
+  const [recipe_5, setRecipe_5] = useState("");
   const [imgURL, setImgURL] = useState(
     "https://images.unsplash.com/photo-1648737965402-2b9c3f3eaa6f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=700&q=60"
   );
@@ -32,7 +36,11 @@ export default function ProductForm() {
       name: name,
       description: description,
       price: price,
-      recipe: recipe,
+      recipe_1: recipe_1,
+      recipe_2: recipe_2,
+      recipe_3: recipe_3,
+      recipe_4: recipe_4,
+      recipe_5: recipe_5,
       imgURL: imgURL,
     };
     const documentId = await createDocument(path, payload);
@@ -45,7 +53,11 @@ export default function ProductForm() {
     setName("");
     setDescription("");
     setPrice(0);
-    setRecipe([]);
+    setRecipe_1("");
+    setRecipe_2("");
+    setRecipe_3("");
+    setRecipe_4("");
+    setRecipe_5("");
     setImgURL("");
   }
 
@@ -80,8 +92,28 @@ export default function ProductForm() {
           validation={validateNumber}
         />
         <InputField
-          setup={formField.recipe}
-          state={[recipe, setRecipe]}
+          setup={formField.recipe_1}
+          state={[recipe_1, setRecipe_1]}
+          validation={validateString}
+        />
+        <InputField
+          setup={formField.recipe_2}
+          state={[recipe_2, setRecipe_2]}
+          validation={validateString}
+        />
+        <InputField
+          setup={formField.recipe_3}
+          state={[recipe_3, setRecipe_3]}
+          validation={validateString}
+        />
+        <InputField
+          setup={formField.recipe_4}
+          state={[recipe_4, setRecipe_4]}
+          validation={validateString}
+        />
+        <InputField
+          setup={formField.recipe_5}
+          state={[recipe_5, setRecipe_5]}
           validation={validateString}
         />
         <label>

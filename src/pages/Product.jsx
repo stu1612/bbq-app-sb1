@@ -5,9 +5,8 @@ export default function Product() {
   // properties
   const location = useLocation();
   const { name, imgURL, description, price } = location.state.data;
-
-  // components
-  // const RecipeList = recipe.map((items, index) => <li key={index}>{items}</li>);
+  const { recipe_1, recipe_2, recipe_3, recipe_4, recipe_5 } =
+    location.state.data;
 
   return (
     <div>
@@ -19,7 +18,13 @@ export default function Product() {
       <h2>{name}</h2>
       <p>{description}</p>
       <p>{price}</p>
-      {/* <ul>{RecipeList}</ul> */}
+      <ul>
+        <li>{recipe_1}</li>
+        <li>{recipe_2}</li>
+        <li>{recipe_3}</li>
+        <li>{recipe_4}</li>
+        <li>{recipe_5}</li>
+      </ul>
       <Link to={-1}>Go back</Link>;
     </div>
   );
