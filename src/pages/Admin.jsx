@@ -1,9 +1,8 @@
 // npm
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { AppContext } from "../context/AppContext";
 // files
-import { readCollection } from "../firebase/firestore";
+import { AppContext } from "../context/AppContext";
 // components
 import Loader from "../components/Loader";
 import ErrorMessage from "../components/ErrorMessage";
@@ -11,27 +10,13 @@ import AdminItems from "../components/AdminItems";
 
 export default function Admin() {
   const { categories, status } = useContext(AppContext);
-  // const [dishes, setDishes] = useState([]);
-
-  // const [status, setStatus] = useState(0);
-
-  // properties
-  // const categoryPath = "Menu/Dishes/content";
-
-  // method
-  // useEffect(() => {
-  //   async function loadData(path) {
-  //     const itemsData = await readCollection(path);
-  //     setDishes(itemsData);
-  //     setStatus(1);
-  //   }
-  //   loadData(categoryPath);
-  // }, []);
 
   // components
   const Categories =
     categories &&
     categories.map((item) => <AdminItems key={item.id} item={item} />);
+
+  const Products = "hello";
 
   // safeguard
   if (status === 0) return <Loader />;
@@ -46,8 +31,14 @@ export default function Admin() {
         <Link to="productForm">Add Product</Link>
       </nav>
       <Outlet />
-      <h3>Categories</h3>
-      {Categories}
+      <div>
+        <h3>Categories</h3>
+        {Categories}
+      </div>
+      <div>
+        <h3>Products</h3>
+        {Products}
+      </div>
     </div>
   );
 }
