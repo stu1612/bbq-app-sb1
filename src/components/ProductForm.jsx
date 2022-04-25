@@ -23,8 +23,7 @@ export default function ProductForm() {
   }
 
   return (
-    <div>
-      <h2>Add category item</h2>
+    <div className="form">
       <form onSubmit={createItem}>
         <InputField
           setup={formField.name}

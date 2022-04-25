@@ -11,6 +11,8 @@ import AdminCategory from "./pages/AdminCategory";
 import AdminProduct from "./pages/AdminProduct";
 // components
 import Navigation from "./components/Navigation";
+// styles
+import "./styles/styles.css";
 
 export default function App() {
   return (
