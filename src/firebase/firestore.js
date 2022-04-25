@@ -1,9 +1,15 @@
 // files
-import { getDoc, doc, getDocs } from "firebase/firestore";
+import { getDoc, doc, getDocs, addDoc } from "firebase/firestore";
 import { collection } from "firebase/firestore";
 import { firestore } from "./firebase";
 
 // CREATE
+export async function createDocument(path, data) {
+  const documentPath = collection(firestore, path);
+  const document = await addDoc(documentPath, data);
+
+  return document.id;
+}
 
 // READ
 export async function readDocument(path, id) {

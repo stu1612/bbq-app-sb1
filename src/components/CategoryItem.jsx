@@ -16,7 +16,11 @@ export default function CategoryItem({ item }) {
   return (
     <div>
       <div>
-        <img src={imgURL} alt={title} />
+        <img
+          src={imgURL}
+          alt={title}
+          style={{ height: "200px", width: "200px", objectFit: "cover" }}
+        />
       </div>
       <h3>{title}</h3>
       <p>{shortDescription}...</p>
