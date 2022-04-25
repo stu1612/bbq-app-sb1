@@ -1,5 +1,5 @@
 // npm
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { AppContext } from "../context/AppContext";
 // components
 import InputField from "../components/InputField";
@@ -12,7 +12,7 @@ import formField from "../data/productInput.json";
 import { createDocument } from "../firebase/firestore";
 
 export default function ProductForm() {
-  const { categories, loadData } = useContext(AppContext);
+  const { categories } = useContext(AppContext);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("0");
@@ -20,14 +20,11 @@ export default function ProductForm() {
   const [imgURL, setImgURL] = useState(
     "https://images.unsplash.com/photo-1648737965402-2b9c3f3eaa6f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=700&q=60"
   );
+  const [optionValue, setOptionValue] = useState("");
   const [products, setProducts] = useState([]);
 
-  useEffect(() => {}, []);
-
   // property
-  // const path = `dishes/dishes/content/${array}/content`;
-
-  console.log("categories", categories);
+  const path = `Menu/Dishes/content/${optionValue}/content`;
 
   async function createItem(event) {
     event.preventDefault();
@@ -38,7 +35,7 @@ export default function ProductForm() {
       recipe: recipe,
       imgURL: imgURL,
     };
-    const documentId = await createDocument("Menu", payload);
+    const documentId = await createDocument(path, payload);
     payload.id = documentId;
     setProducts([...products, payload]);
     resetForm();
@@ -52,21 +49,21 @@ export default function ProductForm() {
     setImgURL("");
   }
 
-  // const dish = array.map((item) => (
-  //   <option value={item.title} key={item.id}>
-  //     {item.title}
-  //   </option>
-  // ));
+  const options = categories.map((item) => (
+    <option value={item.id} key={item.id}>
+      {item.title}
+    </option>
+  ));
 
   return (
     <div className="form">
       <form onSubmit={createItem}>
-        {/* <select
-          value={array}
-          onChange={(event) => setArray(event.target.value)}
+        <select
+          value={optionValue}
+          onChange={(event) => setOptionValue(event.target.value)}
         >
-          {dish}
-        </select> */}
+          {options}
+        </select>
         <InputField
           setup={formField.name}
           state={[name, setName]}

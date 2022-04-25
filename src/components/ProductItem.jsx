@@ -17,7 +17,11 @@ export default function ProductItem({ item }) {
   return (
     <div>
       <div>
-        <img src={imgURL} alt={name} />
+        <img
+          src={imgURL}
+          alt={name}
+          style={{ height: "200px", width: "200px", objectFit: "cover" }}
+        />
       </div>
       <h2>{name}</h2>
       <p>{price}</p>
