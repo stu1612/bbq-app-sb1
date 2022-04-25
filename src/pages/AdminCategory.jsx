@@ -14,7 +14,6 @@ import Loader from "../components/Loader";
 export default function CategoryForm() {
   const { categories, setCategories } = useContext(AppContext);
   const [status, setStatus] = useState(1);
-  // const [dishes, setDishes] = useState([]);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [imgURL, setImgURL] = useState("");
