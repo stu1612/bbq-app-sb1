@@ -37,6 +37,7 @@ export default function Admin() {
   return (
     <div>
       <nav>
+        <Link to="/admin">Admin console</Link>
         <Link to="categoryForm">Add Category </Link>
         <Link to="productForm">Add Product</Link>
       </nav>

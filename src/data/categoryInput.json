@@ -1,0 +1,16 @@
+{
+  "title": {
+    "autoFocus": true,
+    "label": "Title of your category item",
+    "placeholder": "Ex: Chicken",
+    "required": true,
+    "type": "text"
+  },
+  "description": {
+    "autoFocus": false,
+    "label": "Long Description of the category item",
+    "placeholder": "Ex: Comprehensive explanation of your item",
+    "required": true,
+    "type": "text"
+  }
+}

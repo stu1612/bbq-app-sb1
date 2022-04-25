@@ -1,0 +1,31 @@
+{
+  "name": {
+    "autoFocus": true,
+    "label": "Title of product item",
+    "placeholder": "Ex: Chicken Wings",
+    "required": true,
+    "type": "text"
+  },
+  "description": {
+    "autoFocus": false,
+    "label": "Description of the product item",
+    "placeholder": "Ex: description of your item",
+    "required": true,
+    "type": "text"
+  },
+  "price": {
+    "autoFocus": false,
+    "label": "Price of item",
+    "required": true,
+    "type": "number",
+    "min": 1,
+    "max": 9999
+  },
+  "recipe": {
+    "autoFocus": false,
+    "label": "List of product items",
+    "placeholder": "Ex: Chicken, BBQ sauce, cucumber",
+    "required": true,
+    "type": "text"
+  }
+}
