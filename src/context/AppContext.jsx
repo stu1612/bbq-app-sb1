@@ -21,7 +21,7 @@ export default function AppContextProvider({ children }) {
   }, []);
 
   return (
-    <AppContext.Provider value={{ categories, status }}>
+    <AppContext.Provider value={{ categories, setCategories, status }}>
       {children}
     </AppContext.Provider>
   );
