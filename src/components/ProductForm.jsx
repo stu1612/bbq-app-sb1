@@ -1,8 +1,8 @@
 // npm
-import { useState, useContext } from "react";
-import { AppContext } from "../context/AppContext";
+import { useState } from "react";
 // components
 import InputField from "../components/InputField";
+import SelectField from "./SelectField";
 // files
 import validateString from "../scripts/validateString";
 import validateNumber from "../scripts/validateNumber";
@@ -12,7 +12,6 @@ import formField from "../data/productInput.json";
 import { createDocument } from "../firebase/firestore";
 
 export default function ProductForm() {
-  const { categories } = useContext(AppContext);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("0");
@@ -21,9 +20,7 @@ export default function ProductForm() {
   const [recipe_3, setRecipe_3] = useState("");
   const [recipe_4, setRecipe_4] = useState("");
   const [recipe_5, setRecipe_5] = useState("");
-  const [imgURL, setImgURL] = useState(
-    "https://images.unsplash.com/photo-1648737965402-2b9c3f3eaa6f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=700&q=60"
-  );
+  const [imgURL, setImgURL] = useState("");
   const [optionValue, setOptionValue] = useState("");
   const [products, setProducts] = useState([]);
 
@@ -43,6 +40,7 @@ export default function ProductForm() {
       recipe_5: recipe_5,
       imgURL: imgURL,
     };
+
     const documentId = await createDocument(path, payload);
     payload.id = documentId;
     setProducts([...products, payload]);
@@ -61,21 +59,10 @@ export default function ProductForm() {
     setImgURL("");
   }
 
-  const options = categories.map((item) => (
-    <option value={item.id} key={item.id}>
-      {item.title}
-    </option>
-  ));
-
   return (
     <div className="form">
       <form onSubmit={createItem}>
-        <select
-          value={optionValue}
-          onChange={(event) => setOptionValue(event.target.value)}
-        >
-          {options}
-        </select>
+        <SelectField state={[optionValue, setOptionValue]} />
         <InputField
           setup={formField.name}
           state={[name, setName]}

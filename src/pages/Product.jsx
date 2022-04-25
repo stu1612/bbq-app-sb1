@@ -17,13 +17,13 @@ export default function Product() {
       />
       <h2>{name}</h2>
       <p>{description}</p>
-      <p>{price}</p>
+      <p>{price} sek</p>
       <ul>
-        <li>{recipe_1}</li>
-        <li>{recipe_2}</li>
-        <li>{recipe_3}</li>
-        <li>{recipe_4}</li>
-        <li>{recipe_5}</li>
+        {recipe_1 && <li>{recipe_1}</li>}
+        {recipe_2 && <li>{recipe_2}</li>}
+        {recipe_3 && <li>{recipe_3}</li>}
+        {recipe_4 && <li>{recipe_4}</li>}
+        {recipe_5 && <li>{recipe_5}</li>}
       </ul>
       <Link to={-1}>Go back</Link>;
     </div>

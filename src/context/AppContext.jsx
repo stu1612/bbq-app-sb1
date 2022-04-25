@@ -9,7 +9,7 @@ export default function AppContextProvider({ children }) {
   const [categories, setCategories] = useState([]);
   const [status, setStatus] = useState(0);
 
-  const path = "Menu/Dishes/content";
+  const CategoryPath = "Menu/Dishes/content";
 
   useEffect(() => {
     async function loadCategories(path) {
@@ -17,7 +17,7 @@ export default function AppContextProvider({ children }) {
       setCategories(itemsData);
       setStatus(1);
     }
-    loadCategories(path);
+    loadCategories(CategoryPath);
   }, []);
 
   return (
