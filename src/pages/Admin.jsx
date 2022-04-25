@@ -1,6 +1,7 @@
 // npm
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { AppContext } from "../context/AppContext";
 // files
 import { readCollection } from "../firebase/firestore";
 // components
@@ -9,30 +10,33 @@ import ErrorMessage from "../components/ErrorMessage";
 import AdminItems from "../components/AdminItems";
 
 export default function Admin() {
-  const [dishes, setDishes] = useState([]);
-  const [status, setStatus] = useState(0);
+  const { categories, status } = useContext(AppContext);
+  // const [dishes, setDishes] = useState([]);
+
+  // const [status, setStatus] = useState(0);
 
   // properties
-  const categoryPath = "Menu/Dishes/content";
+  // const categoryPath = "Menu/Dishes/content";
 
   // method
-  useEffect(() => {
-    async function loadData(path) {
-      const itemsData = await readCollection(path);
-      setDishes(itemsData);
-      setStatus(1);
-    }
-    loadData(categoryPath);
-  }, []);
+  // useEffect(() => {
+  //   async function loadData(path) {
+  //     const itemsData = await readCollection(path);
+  //     setDishes(itemsData);
+  //     setStatus(1);
+  //   }
+  //   loadData(categoryPath);
+  // }, []);
 
   // components
   const Categories =
-    dishes && dishes.map((item) => <AdminItems key={item.id} item={item} />);
+    categories &&
+    categories.map((item) => <AdminItems key={item.id} item={item} />);
 
   // safeguard
   if (status === 0) return <Loader />;
   if (status === 2) return <p>Error ..</p>;
-  if (dishes === undefined) return <ErrorMessage />;
+  if (categories === undefined) return <ErrorMessage />;
 
   return (
     <div>

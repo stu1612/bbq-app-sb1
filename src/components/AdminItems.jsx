@@ -1,8 +1,13 @@
-import { useState } from "react";
+// npm
+import { useState, useContext } from "react";
+// firebase
 import { readCollection } from "../firebase/firestore";
+// files
+import { AppContext } from "../context/AppContext";
 
 export default function AdminCategoryItem({ item }) {
   const { title, id } = item;
+  const { deleteCategoryItem } = useContext(AppContext);
   const [products, setProducts] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -25,7 +30,7 @@ export default function AdminCategoryItem({ item }) {
     <div>
       <h3>{title}</h3>
       <p>{id}</p>
-      <button>Delete</button>
+      <button onClick={() => deleteCategoryItem(id)}>Delete</button>
       <button onClick={() => loadData(`Menu/Dishes/content/${id}/content/`)}>
         {isOpen ? "Hide" : "Show"}
       </button>
