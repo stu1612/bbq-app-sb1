@@ -11,7 +11,6 @@ export default function CategoryItem({ item }) {
 
   // methods
   const slugTitle = slugify(title);
-
   const shortDescription = trimmedString(description);
 
   return (

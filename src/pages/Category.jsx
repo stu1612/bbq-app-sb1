@@ -5,6 +5,7 @@ import { useParams, useLocation } from "react-router-dom";
 import { readCollection } from "../firebase/firestore";
 // components
 import ProductItem from "../components/ProductItem";
+import Loader from "../components/Loader";
 
 export default function Category() {
   const [dishes, setDishes] = useState([]);
@@ -27,7 +28,7 @@ export default function Category() {
   }, [routeId]);
 
   // safeguard
-  if (status === 0) return <p>Loading ..</p>;
+  if (status === 0) return <Loader />;
   if (status === 2) return <p>Error ..</p>;
 
   const Products =

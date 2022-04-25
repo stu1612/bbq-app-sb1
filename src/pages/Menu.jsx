@@ -5,6 +5,7 @@ import CategoryItem from "../components/CategoryItem";
 import { readCollection } from "../firebase/firestore";
 // components
 import ErrorMessage from "../components/ErrorMessage";
+import Loader from "../components/Loader";
 
 export default function Menu() {
   const [dishes, setDishes] = useState([]);
@@ -23,7 +24,7 @@ export default function Menu() {
   }, []);
 
   // safeguard
-  if (status === 0) return <p>Loading ..</p>;
+  if (status === 0) return <Loader />;
   if (status === 2) return <p>Error ..</p>;
   if (dishes === undefined) return <ErrorMessage />;
 
