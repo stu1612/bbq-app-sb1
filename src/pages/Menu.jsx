@@ -1,5 +1,5 @@
 // npm
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 // components
 import CategoryItem from "../components/CategoryItem";
@@ -7,14 +7,14 @@ import ErrorMessage from "../components/ErrorMessage";
 import Loader from "../components/Loader";
 
 export default function Menu() {
-  const { status, categories, loadData } = useContext(AppContext);
+  const { status, categories } = useContext(AppContext);
 
   // properties
-  const path = "Menu/Dishes/content";
+  // const path = "Menu/Dishes/content";
 
-  useEffect(() => {
-    loadData(path);
-  }, [loadData]);
+  // useEffect(() => {
+  //   loadData(path);
+  // }, [loadData]);
 
   // safeguard
   if (status === 0) return <Loader />;

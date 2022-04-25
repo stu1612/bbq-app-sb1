@@ -1,5 +1,5 @@
 // npm
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 // firebase
 import { readCollection } from "../firebase/firestore";
 
@@ -9,13 +9,19 @@ export default function AppContextProvider({ children }) {
   const [categories, setCategories] = useState([]);
   const [status, setStatus] = useState(0);
 
-  async function loadData(path) {
-    const itemsData = await readCollection(path);
-    setCategories(itemsData);
-    setStatus(1);
-  }
+  const path = "Menu/Dishes/content";
+
+  useEffect(() => {
+    async function loadCategories(path) {
+      const itemsData = await readCollection(path);
+      setCategories(itemsData);
+      setStatus(1);
+    }
+    loadCategories(path);
+  }, []);
+
   return (
-    <AppContext.Provider value={{ categories, status, loadData }}>
+    <AppContext.Provider value={{ categories, status }}>
       {children}
     </AppContext.Provider>
   );

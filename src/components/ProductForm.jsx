@@ -1,5 +1,6 @@
 // npm
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import { AppContext } from "../context/AppContext";
 // components
 import InputField from "../components/InputField";
 // files
@@ -9,9 +10,9 @@ import validateNumber from "../scripts/validateNumber";
 import formField from "../data/productInput.json";
 // firebase
 import { createDocument } from "../firebase/firestore";
-import Loader from "./Loader";
 
-export default function ProductForm({ optionValue, setOptionValue }) {
+export default function ProductForm() {
+  const { categories, loadData } = useContext(AppContext);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("0");
@@ -19,15 +20,17 @@ export default function ProductForm({ optionValue, setOptionValue }) {
   const [imgURL, setImgURL] = useState(
     "https://images.unsplash.com/photo-1648737965402-2b9c3f3eaa6f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=700&q=60"
   );
-  const [status, setStatus] = useState(0);
   const [products, setProducts] = useState([]);
 
+  useEffect(() => {}, []);
+
   // property
-  const path = `dishes/dishes/content/${optionValue}/content`;
+  // const path = `dishes/dishes/content/${array}/content`;
+
+  console.log("categories", categories);
 
   async function createItem(event) {
     event.preventDefault();
-    setStatus(0);
     const payload = {
       name: name,
       description: description,
@@ -35,11 +38,10 @@ export default function ProductForm({ optionValue, setOptionValue }) {
       recipe: recipe,
       imgURL: imgURL,
     };
-    const documentId = await createDocument(path, payload);
+    const documentId = await createDocument("Menu", payload);
     payload.id = documentId;
     setProducts([...products, payload]);
     resetForm();
-    setStatus(1);
   }
 
   function resetForm() {
@@ -50,18 +52,21 @@ export default function ProductForm({ optionValue, setOptionValue }) {
     setImgURL("");
   }
 
-  // safegaurd
-  if (status === 0) return <Loader />;
+  // const dish = array.map((item) => (
+  //   <option value={item.title} key={item.id}>
+  //     {item.title}
+  //   </option>
+  // ));
 
   return (
     <div className="form">
       <form onSubmit={createItem}>
-        <select
-          value={optionValue}
-          onChange={(event) => setOptionValue(event.target.value)}
+        {/* <select
+          value={array}
+          onChange={(event) => setArray(event.target.value)}
         >
-          {optionValue}
-        </select>
+          {dish}
+        </select> */}
         <InputField
           setup={formField.name}
           state={[name, setName]}
