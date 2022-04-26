@@ -1,9 +1,11 @@
 // npm
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 // components
 import InputField from "../components/InputField";
 import SelectField from "../components/SelectField";
 import Loader from "../components/Loader";
+import InputFile from "../components/InputFile";
 // files
 import validateString from "../scripts/validateString";
 import validateNumber from "../scripts/validateNumber";
@@ -11,6 +13,7 @@ import validateNumber from "../scripts/validateNumber";
 import formField from "../data/productInput.json";
 // firebase
 import { createDocument } from "../firebase/firestore";
+import { createFile } from "../firebase/cloudStorage";
 
 export default function ProductForm() {
   const [name, setName] = useState("");
@@ -21,9 +24,7 @@ export default function ProductForm() {
   const [recipe_3, setRecipe_3] = useState("");
   const [recipe_4, setRecipe_4] = useState("");
   const [recipe_5, setRecipe_5] = useState("");
-  const [imgURL, setImgURL] = useState(
-    "https://images.unsplash.com/photo-1648737965402-2b9c3f3eaa6f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=700&q=60"
-  );
+  const [file, setFile] = useState(null);
   const [optionValue, setOptionValue] = useState("");
   const [products, setProducts] = useState([]);
   const [status, setStatus] = useState(1);
@@ -44,14 +45,29 @@ export default function ProductForm() {
       recipe_3: recipe_3,
       recipe_4: recipe_4,
       recipe_5: recipe_5,
-      imgURL: imgURL,
+      imgURL: "",
     };
+
+    // upload to cloudStorage
+    const storagePath = "menu/products/";
+    const id = uuidv4();
+    const pathName = `${name}-${id}.png`;
+    const fileName = `${storagePath}${pathName}`;
+    const updatedImgURL = await createFile(fileName, file);
+
+    // add url into object
+    payload.imgURL = updatedImgURL;
 
     const documentId = await createDocument(path, payload);
     payload.id = documentId;
     setProducts([...products, payload]);
     resetForm();
     setStatus(1);
+  }
+
+  function onImageSelect(event) {
+    const file = event.target.files[0];
+    setFile(file);
   }
 
   function resetForm() {
@@ -63,7 +79,7 @@ export default function ProductForm() {
     setRecipe_3("");
     setRecipe_4("");
     setRecipe_5("");
-    setImgURL("");
+    setFile(null);
   }
 
   // safeguard
@@ -113,16 +129,7 @@ export default function ProductForm() {
           state={[recipe_5, setRecipe_5]}
           validation={validateString}
         />
-        <label>
-          Image:
-          <input
-            type="text"
-            accept="image/png, image/jpg"
-            value={imgURL}
-            onChange={(event) => setImgURL(event.target.value)}
-            required
-          />
-        </label>
+        <InputFile onImageSelect={onImageSelect} />
         <button type="submit">Submit</button>
       </form>
     </div>

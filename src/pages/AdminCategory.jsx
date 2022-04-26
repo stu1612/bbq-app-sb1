@@ -79,16 +79,6 @@ export default function CategoryForm() {
           state={[description, setDescription]}
           validation={validateString}
         />
-        {/* <label>
-          Image:
-          <input
-            type="text"
-            accept="image/png, image/jpg"
-            value={imgURL}
-            onChange={(event) => setImgURL(event.target.value)}
-            required
-          />
-        </label> */}
         <InputFile onImageSelect={onImageSelect} />
         <button type="submit">Submit</button>
       </form>
