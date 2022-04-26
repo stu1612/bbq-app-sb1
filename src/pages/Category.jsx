@@ -6,6 +6,8 @@ import { AppContext } from "../context/AppContext";
 // components
 import Loader from "../components/Loader";
 import ProductItem from "../components/ProductItem";
+// images
+import hero from "../assets/images/hero_3.jpg";
 
 export default function Category() {
   const { products, loadProducts } = useContext(AppContext);
@@ -38,10 +40,15 @@ export default function Category() {
   );
 
   return (
-    <div>
-      <h2>Category - {title}</h2>
-      {Products}
-      {noProducts}
-    </div>
+    <section>
+      <section className="hero">
+        <img src={hero} alt="ribs cooking on bbq" className="hero-image" />
+        <h1 className="title">{title}</h1>
+      </section>
+      <section className="cards">
+        {Products}
+        {noProducts}
+      </section>
+    </section>
   );
 }

@@ -1,0 +1,23 @@
+{
+  "name": {
+    "autoFocus": true,
+    "label": "Name",
+    "placeholder": "Ex: Stuart Bolderson",
+    "required": true,
+    "type": "text"
+  },
+  "date": {
+    "autoFocus": false,
+    "label": "Date",
+    "placeholder": "Ex: 22/06/22",
+    "required": true,
+    "type": "date"
+  },
+  "time": {
+    "autoFocus": false,
+    "label": "Time",
+    "placeholder": "Ex: 18:30",
+    "required": true,
+    "type": "time"
+  }
+}

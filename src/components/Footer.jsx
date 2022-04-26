@@ -19,7 +19,7 @@ export default function Footer() {
           </Link>
         </div>
       </div>
-      <div className="copyright"></div>
+      <div className="copyright">&#169; Holy BBQ | 2022</div>
     </footer>
   );
 }

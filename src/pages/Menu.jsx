@@ -5,6 +5,8 @@ import { AppContext } from "../context/AppContext";
 import CategoryItem from "../components/CategoryItem";
 import ErrorMessage from "../components/ErrorMessage";
 import Loader from "../components/Loader";
+// images
+import hero from "../assets/images/hero_2.jpg";
 
 export default function Menu() {
   const { status, categories } = useContext(AppContext);
@@ -22,8 +24,13 @@ export default function Menu() {
 
   return (
     <section className="menu" id="menu">
-      <h2>Menu</h2>
-      <div>{Categories}</div>
+      <section className="hero">
+        <img src={hero} alt="ribs cooking on bbq" className="hero-image" />
+        <h1 className="title">menu</h1>
+      </section>
+      <section>
+        <div>{Categories}</div>
+      </section>
     </section>
   );
 }

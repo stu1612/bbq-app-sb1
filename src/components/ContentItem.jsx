@@ -4,7 +4,7 @@ export default function ContentItem(props) {
   const { title, firstParagraph, secondParagraph, link } = props.children;
 
   const ContactUs = link && (
-    <Link to="/contact" className="btn">
+    <Link to="/contact" className="btn btn-primary">
       Contact us
     </Link>
   );

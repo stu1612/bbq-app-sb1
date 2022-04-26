@@ -13,10 +13,12 @@
 /* molecules */
 @import "./molecules/containers.css";
 @import "./molecules/navigation.css";
+@import "./molecules/hero.css";
 @import "./molecules/contentItem.css";
 @import "./molecules/footer.css";
 @import "./molecules/pills.css";
+@import "./molecules/cards.css";
 
 /* templates */
-
+@import "./templates/forms.css";
 @import "./templates/home.css";

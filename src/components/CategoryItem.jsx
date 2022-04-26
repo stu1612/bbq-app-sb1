@@ -14,19 +14,21 @@ export default function CategoryItem({ item }) {
   const shortDescription = trimmedString(description);
 
   return (
-    <div>
-      <div>
-        <img
-          src={imgURL}
-          alt={title}
-          style={{ height: "200px", width: "200px", objectFit: "cover" }}
-        />
+    <div className="card-item">
+      <div className="card-image">
+        <img src={imgURL} alt={title} />
       </div>
-      <h3>{title}</h3>
-      <p>{shortDescription}...</p>
-      <Link to={`/menu/${slugTitle}`} state={{ data: categoryItem }}>
-        See more
-      </Link>
+      <div className="card-content">
+        <h3>{title}</h3>
+        <p>{shortDescription}...</p>
+        <Link
+          to={`/menu/${slugTitle}`}
+          state={{ data: categoryItem }}
+          className="btn btn-primary"
+        >
+          See more
+        </Link>
+      </div>
     </div>
   );
 }
