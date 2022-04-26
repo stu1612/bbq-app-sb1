@@ -18,7 +18,7 @@ export default function Product() {
       <h2>{name}</h2>
       <p>{description}</p>
       <p>{price} sek</p>
-      <ul>
+      <ul className="recipes">
         {recipe_1 && <li>{recipe_1}</li>}
         {recipe_2 && <li>{recipe_2}</li>}
         {recipe_3 && <li>{recipe_3}</li>}

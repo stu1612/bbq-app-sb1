@@ -15,20 +15,26 @@ export default function ProductItem({ item }) {
   const slugName = slugify(name);
 
   return (
-    <div>
-      <div>
+    <div className="card-item">
+      <div className="card-image">
         <img
           src={imgURL}
           alt={name}
           style={{ height: "200px", width: "200px", objectFit: "cover" }}
         />
       </div>
-      <h2>{name}</h2>
-      <p>{price}</p>
-      <p>{description}</p>
-      <Link to={`/menu/${slugTitle}/${slugName}`} state={{ data: productItem }}>
-        see details
-      </Link>
+      <div className="card-content">
+        <h2>{name}</h2>
+        <p>{price} sek</p>
+        <p>{description}</p>
+        <Link
+          to={`/menu/${slugTitle}/${slugName}`}
+          state={{ data: productItem }}
+          className="btn btn-primary"
+        >
+          see details
+        </Link>
+      </div>
     </div>
   );
 }
