@@ -1,6 +1,7 @@
 // npm
 import { useState, useContext } from "react";
 import { AppContext } from "../context/AppContext";
+import { v4 as uuidv4 } from "uuid";
 // components
 import InputField from "../components/InputField";
 // files
@@ -9,16 +10,17 @@ import validateString from "../scripts/validateString";
 import formField from "../data/categoryInput.json";
 // firebase
 import { createDocument } from "../firebase/firestore";
+import { createFile } from "../firebase/cloudStorage";
+// components
 import Loader from "../components/Loader";
+import InputFile from "../components/InputFile";
 
 export default function CategoryForm() {
   const { categories, setCategories } = useContext(AppContext);
   const [status, setStatus] = useState(1);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [imgURL, setImgURL] = useState(
-    "https://images.unsplash.com/photo-1648737965402-2b9c3f3eaa6f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=700&q=60"
-  );
+  const [file, setFile] = useState(null);
 
   // properties
   const path = "Menu/Dishes/content";
@@ -29,8 +31,19 @@ export default function CategoryForm() {
     const payload = {
       title: title,
       description: description,
-      imgURL: imgURL,
+      imgURL: "",
     };
+
+    // upload to cloudStorage
+    const storagePath = "menu/";
+    const id = uuidv4();
+    const pathName = `${title}-${id}.png`;
+    const fileName = `${storagePath}${pathName}`;
+    const updatedImgURL = await createFile(fileName, file);
+
+    // add url into object
+    payload.imgURL = updatedImgURL;
+
     const documentId = await createDocument(path, payload);
     payload.id = documentId;
     setCategories([...categories, payload]);
@@ -38,10 +51,16 @@ export default function CategoryForm() {
     setStatus(1);
   }
 
+  function onImageSelect(event) {
+    const file = event.target.files[0];
+    if (file === null) return;
+    setFile(file);
+  }
+
   function resetForm() {
     setTitle("");
     setDescription("");
-    setImgURL("");
+    setFile(null);
   }
 
   // safeguard
@@ -60,7 +79,7 @@ export default function CategoryForm() {
           state={[description, setDescription]}
           validation={validateString}
         />
-        <label>
+        {/* <label>
           Image:
           <input
             type="text"
@@ -69,7 +88,8 @@ export default function CategoryForm() {
             onChange={(event) => setImgURL(event.target.value)}
             required
           />
-        </label>
+        </label> */}
+        <InputFile onImageSelect={onImageSelect} />
         <button type="submit">Submit</button>
       </form>
     </div>
