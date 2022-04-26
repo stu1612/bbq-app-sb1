@@ -14,7 +14,7 @@ export default function Footer() {
           <BsInstagram size={28} className="social-icon" />
         </div>
         <div>
-          <Link to="/contact" className="btn">
+          <Link to="/contact" className="btn btn-primary">
             Contact
           </Link>
         </div>

@@ -17,6 +17,7 @@ export default function Category() {
   const { title } = useParams();
   const location = useLocation();
   const routeId = location.state.data.id;
+  console.log(routeId);
 
   const path = `Menu/Dishes/content/${routeId}/content`;
 

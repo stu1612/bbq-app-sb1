@@ -79,7 +79,9 @@ export default function ProductForm({
         validation={validateString}
       />
       <InputFile onImageSelect={onImageSelect} />
-      <button type="submit">Submit</button>
+      <button type="submit" className="btn btn-primary">
+        Submit
+      </button>
     </form>
   );
 }

@@ -24,9 +24,15 @@ export default function Admin() {
   return (
     <div>
       <nav>
-        <Link to="/admin">Admin console</Link>
-        <Link to="categoryForm">Add Category </Link>
-        <Link to="productForm">Add Product</Link>
+        <Link to="/admin" className="btn btn-primary">
+          Admin console
+        </Link>
+        <Link to="categoryForm" className="btn btn-primary">
+          Add Category
+        </Link>
+        <Link to="productForm" className="btn btn-primary">
+          Add Product
+        </Link>
       </nav>
       <Outlet />
       <div>

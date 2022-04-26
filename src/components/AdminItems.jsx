@@ -21,8 +21,16 @@ export default function AdminCategoryItem({ item }) {
     <div>
       <h3>{title}</h3>
       <p>{id}</p>
-      <button onClick={() => deleteCategoryItem(item.id)}>Delete</button>
-      <button onClick={() => loadData(`Menu/Dishes/content/${id}/content/`)}>
+      <button
+        onClick={() => deleteCategoryItem(item.id)}
+        className="btn btn-primary"
+      >
+        Delete
+      </button>
+      <button
+        onClick={() => loadData(`Menu/Dishes/content/${id}/content/`)}
+        className="btn btn-primary"
+      >
         show
       </button>
       {isOpen
