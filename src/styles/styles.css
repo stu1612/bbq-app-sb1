@@ -12,5 +12,11 @@
 
 /* molecules */
 @import "./molecules/containers.css";
+@import "./molecules/navigation.css";
+@import "./molecules/contentItem.css";
+@import "./molecules/footer.css";
+@import "./molecules/pills.css";
 
 /* templates */
+
+@import "./templates/home.css";

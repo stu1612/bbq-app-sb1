@@ -18,6 +18,11 @@ html {
   font-family: "Roboto Mono", monospace, Arial, Helvetica, sans-serif;
 }
 
+body {
+  background-color: var(--cl-dark);
+  color: var(--cl-light);
+}
+
 a,
 li {
   list-style: none;

@@ -8,6 +8,8 @@ import Loader from "../components/Loader";
 import ContentItem from "../components/ContentItem";
 import PillsContainer from "../components/PillsContainer";
 import ErrorMessage from "../components/ErrorMessage";
+// images
+import hero from "../assets/images/hero.jpg";
 
 export default function Home() {
   const { categories } = useContext(AppContext);
@@ -25,14 +27,14 @@ export default function Home() {
 
   return (
     <section className="home" id="home">
-      <div className="hero-image">
-        <h1>holy bbq</h1>
-        <img src="" alt="" />
-      </div>
+      <section className="hero">
+        <img src={hero} alt="steaks cooking on bbq" className="hero-image" />
+        <h1 className="title">holy bbq</h1>
+      </section>
       <ContentItem>{dataObj}</ContentItem>
-      <div className="banner-image" />
+      <div className="banner-image top" />
       <ContentItem>{dataObj1}</ContentItem>
-      <div className="banner-image" />
+      <div className="banner-image bottom" />
       <article className="content">
         <ContentItem>{dataObj2}</ContentItem>
         <PillsContainer categories={categories} />

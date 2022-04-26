@@ -8,7 +8,6 @@ export default function PillsContainer({ categories }) {
       state={{ data: item }}
       key={item.id}
       className="pill"
-      style={{ padding: "10px" }}
     >
       {item.title}
     </Link>

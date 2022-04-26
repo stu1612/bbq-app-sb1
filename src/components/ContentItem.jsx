@@ -1,10 +1,19 @@
+import { Link } from "react-router-dom";
+
 export default function ContentItem(props) {
-  const { title, firstParagraph, secondParagraph } = props.children;
+  const { title, firstParagraph, secondParagraph, link } = props.children;
+
+  const ContactUs = link && (
+    <Link to="/contact" className="btn">
+      Contact us
+    </Link>
+  );
   return (
-    <article className="content">
-      <h2>{title}</h2>
-      <p>{firstParagraph}</p>
-      <p>{secondParagraph}</p>
+    <article className="content-item container-920">
+      <h2 className="content-h2">{title}</h2>
+      <p className="content-p">{firstParagraph}</p>
+      <p className="content-p">{secondParagraph}</p>
+      {ContactUs}
     </article>
   );
 }

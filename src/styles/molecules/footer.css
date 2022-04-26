@@ -1,0 +1,16 @@
+footer {
+  background-color: rgb(56, 56, 56);
+  padding: 5rem 0;
+}
+
+.social-footer {
+  display: flex;
+  margin: 0 auto;
+  width: min(95%, 1200px);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.social-icon {
+  margin: 0 2rem;
+}

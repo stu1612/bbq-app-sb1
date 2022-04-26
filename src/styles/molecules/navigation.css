@@ -1,0 +1,29 @@
+.navigation {
+  background: black;
+  width: 100%;
+  height: 10rem;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  z-index: 10;
+  box-shadow: 0 -12px 50px -1px rgb(255 255 255 / 60%);
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: min(95%, 1200px);
+  height: 100%;
+}
+
+.links {
+  display: flex;
+}
+
+.links a {
+  padding: 0 2rem;
+}

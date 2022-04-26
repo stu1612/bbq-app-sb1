@@ -1,19 +1,20 @@
 // npm
 import { Link } from "react-router-dom";
+import { GiAnimalSkull } from "react-icons/gi";
 
 export default function Navigation() {
   return (
-    <nav>
-      <header>
+    <div className="navigation">
+      <nav className="nav">
         <div className="logo">
-          <img src="" alt="" />
+          <GiAnimalSkull size={48} />
         </div>
-      </header>
-      <ul>
-        <Link to="/">Home</Link>
-        <Link to="/menu">Menu</Link>
-        <Link to="/contact">Contact</Link>
-      </ul>
-    </nav>
+        <ul className="links">
+          <Link to="/">Home</Link>
+          <Link to="/menu">Menu</Link>
+          <Link to="/contact">Contact</Link>
+        </ul>
+      </nav>
+    </div>
   );
 }
