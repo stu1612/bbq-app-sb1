@@ -1,37 +1,22 @@
 // npm
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 // firebase
-import { readCollection, deleteDocument } from "../firebase/firestore";
+import { readCollection } from "../firebase/firestore";
 // files
 import { AppContext } from "../context/AppContext";
-import AdminProductItem from "./AdminProductItem";
-import deleteItem from "../scripts/deleteItem";
 
 export default function AdminCategoryItem({ item }) {
   const { title, id } = item;
-  const { deleteCategoryItem } = useContext(AppContext);
-  const [products, setProducts] = useState([]);
+  const { deleteCategoryItem, deleteProductItem, products, setProducts } =
+    useContext(AppContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [show, setShow] = useState([]);
 
-  // method
   async function loadData(path) {
     const itemsData = await readCollection(path);
     setProducts(itemsData);
     setIsOpen(!isOpen);
   }
 
-  // shows and delets admin product item
-  // const Products = isOpen
-  //   ? products.map((item) => (
-  //       <div key={item.id}>
-  //         {item.name}
-  //         <button onClick={() => deleteItem()}>Delete</button>
-  //       </div>
-  //     ))
-  //   : null;
-
-  // shows and delete category item
   return (
     <div>
       <h3>{title}</h3>
@@ -46,11 +31,9 @@ export default function AdminCategoryItem({ item }) {
               {item.name}
               <button
                 onClick={() =>
-                  deleteItem(
+                  deleteProductItem(
                     `Menu/Dishes/content/${id}/content/`,
-                    item.id,
-                    products,
-                    setProducts
+                    item.id
                   )
                 }
               >

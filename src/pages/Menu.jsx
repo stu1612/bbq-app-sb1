@@ -12,12 +12,13 @@ export default function Menu() {
   // safeguard
   if (status === 0) return <Loader />;
   if (status === 2) return <p>Error ..</p>;
-  if (categories === undefined) return <p>Error ..</p>;
+  if (categories === undefined) return <ErrorMessage />;
 
   // components
-  const Categories =
-    categories &&
-    categories.map((item) => <CategoryItem key={item.id} item={item} />);
+  const mappedCategories = categories.map((item) => (
+    <CategoryItem key={item.id} item={item} />
+  ));
+  const Categories = categories && mappedCategories;
 
   return (
     <section className="menu" id="menu">

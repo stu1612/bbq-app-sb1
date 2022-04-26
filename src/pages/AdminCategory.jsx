@@ -2,25 +2,19 @@
 import { useState, useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import { v4 as uuidv4 } from "uuid";
-// components
-import InputField from "../components/InputField";
-// files
-import validateString from "../scripts/validateString";
-// data
-import formField from "../data/categoryInput.json";
 // firebase
 import { createDocument } from "../firebase/firestore";
 import { createFile } from "../firebase/cloudStorage";
 // components
+import CategoryForm from "../components/CategoryForm";
 import Loader from "../components/Loader";
-import InputFile from "../components/InputFile";
 
-export default function CategoryForm() {
+export default function AdminCategory() {
   const { categories, setCategories } = useContext(AppContext);
-  const [status, setStatus] = useState(1);
-  const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [file, setFile] = useState(null);
+  const [status, setStatus] = useState(1);
+  const [title, setTitle] = useState("");
 
   // properties
   const path = "Menu/Dishes/content";
@@ -67,21 +61,11 @@ export default function CategoryForm() {
   if (status === 0) return <Loader />;
 
   return (
-    <div className="form">
-      <form onSubmit={createItem}>
-        <InputField
-          setup={formField.title}
-          state={[title, setTitle]}
-          validation={validateString}
-        />
-        <InputField
-          setup={formField.description}
-          state={[description, setDescription]}
-          validation={validateString}
-        />
-        <InputFile onImageSelect={onImageSelect} />
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+    <CategoryForm
+      titleState={[title, setTitle]}
+      describeState={[description, setDescription]}
+      onImageSelect={onImageSelect}
+      createItem={createItem}
+    />
   );
 }

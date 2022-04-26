@@ -4,9 +4,9 @@ import { Link, Outlet } from "react-router-dom";
 // files
 import { AppContext } from "../context/AppContext";
 // components
-import Loader from "../components/Loader";
-import ErrorMessage from "../components/ErrorMessage";
 import AdminItems from "../components/AdminItems";
+import ErrorMessage from "../components/ErrorMessage";
+import Loader from "../components/Loader";
 
 export default function Admin() {
   const { categories, status } = useContext(AppContext);
@@ -15,8 +15,6 @@ export default function Admin() {
   const Categories =
     categories &&
     categories.map((item) => <AdminItems key={item.id} item={item} />);
-
-  const Products = "hello";
 
   // safeguard
   if (status === 0) return <Loader />;
@@ -34,10 +32,6 @@ export default function Admin() {
       <div>
         <h3>Categories</h3>
         {Categories}
-      </div>
-      <div>
-        <h3>Products</h3>
-        {Products}
       </div>
     </div>
   );

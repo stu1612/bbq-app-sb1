@@ -1,0 +1,23 @@
+[
+  {
+    "id": 0,
+    "title": "opening hours",
+    "firstParagraph": "The restaurant is open Monday - Thursday from 11-20 and Friday - Saturday 12-22. We are closed Sundays",
+    "secondParagraph": "For all bookings please fill out our booking form and we will get back to you with a confirmation !",
+    "link": "contact"
+  },
+  {
+    "id": 1,
+    "title": "about",
+    "firstParagraph": "Our newly refurbished BBQ Steak House imports the very best quality meat from all over the world",
+    "secondParagraph": "Our dedicated team of chefs pride themselves on sourcing happy meat which is both tasty and farm friendly. We dont compromoise on quality and not should you - Welcome to Holy BBQ !",
+    "link": ""
+  },
+  {
+    "id": 2,
+    "title": "menu",
+    "firstParagraph": "Our menu is constantly being updated as our chefs continue to break the BBQ boundaries !",
+    "secondParagraph": "Feel free to check out some of our current food items currently in circulation",
+    "link": ""
+  }
+]

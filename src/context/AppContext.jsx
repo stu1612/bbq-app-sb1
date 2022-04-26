@@ -9,6 +9,12 @@ export default function AppContextProvider({ children }) {
   const [categories, setCategories] = useState([]);
   const [status, setStatus] = useState(0);
   const [products, setProducts] = useState([]);
+  // product form
+  const [recipe_1, setRecipe_1] = useState("");
+  const [recipe_2, setRecipe_2] = useState("");
+  const [recipe_3, setRecipe_3] = useState("");
+  const [recipe_4, setRecipe_4] = useState("");
+  const [recipe_5, setRecipe_5] = useState("");
 
   const CategoryPath = "Menu/Dishes/content/";
 
@@ -20,15 +26,6 @@ export default function AppContextProvider({ children }) {
     }
     loadCategories(CategoryPath);
   }, []);
-
-  //   useEffect(() => {
-  //     async function loadProducts(path) {
-  //       const itemsData = await readCollection(path);
-  //       setProducts(itemsData);
-  //       setStatus(1);
-  //     }
-  //     loadProducts(path);
-  //   }, []);
 
   async function loadProducts(path) {
     const itemsData = await readCollection(path);
@@ -49,6 +46,14 @@ export default function AppContextProvider({ children }) {
     return setProducts(deleteItem);
   }
 
+  function resetRecipes() {
+    setRecipe_1("");
+    setRecipe_2("");
+    setRecipe_3("");
+    setRecipe_4("");
+    setRecipe_5("");
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -60,6 +65,17 @@ export default function AppContextProvider({ children }) {
         setProducts,
         loadProducts,
         deleteProductItem,
+        recipe_1,
+        recipe_2,
+        recipe_3,
+        recipe_4,
+        recipe_5,
+        setRecipe_1,
+        setRecipe_2,
+        setRecipe_3,
+        setRecipe_4,
+        setRecipe_5,
+        resetRecipes,
       }}
     >
       {children}
