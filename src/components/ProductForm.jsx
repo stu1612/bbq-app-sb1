@@ -12,7 +12,7 @@ import formField from "../data/productInput.json";
 import { createDocument } from "../firebase/firestore";
 
 export default function ProductForm() {
-  const [name, setName] = useState("");
+  const [name, setName] = useState("dave");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("0");
   const [recipe_1, setRecipe_1] = useState("");
@@ -20,7 +20,9 @@ export default function ProductForm() {
   const [recipe_3, setRecipe_3] = useState("");
   const [recipe_4, setRecipe_4] = useState("");
   const [recipe_5, setRecipe_5] = useState("");
-  const [imgURL, setImgURL] = useState("");
+  const [imgURL, setImgURL] = useState(
+    "https://images.unsplash.com/photo-1648737965402-2b9c3f3eaa6f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=700&q=60"
+  );
   const [optionValue, setOptionValue] = useState("");
   const [products, setProducts] = useState([]);
 

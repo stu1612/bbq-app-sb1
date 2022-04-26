@@ -16,7 +16,9 @@ export default function CategoryForm() {
   const [status, setStatus] = useState(1);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [imgURL, setImgURL] = useState("");
+  const [imgURL, setImgURL] = useState(
+    "https://images.unsplash.com/photo-1648737965402-2b9c3f3eaa6f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=700&q=60"
+  );
 
   // properties
   const path = "Menu/Dishes/content";

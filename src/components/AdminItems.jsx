@@ -8,6 +8,7 @@ import AdminProductItem from "./AdminProductItem";
 
 export default function AdminCategoryItem({ item }) {
   const { title, id } = item;
+  const { deleteCategoryItem } = useContext(AppContext);
   const [products, setProducts] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -31,8 +32,7 @@ export default function AdminCategoryItem({ item }) {
     <div>
       <h3>{title}</h3>
       <p>{id}</p>
-      <button>Delete</button>
-
+      <button onClick={() => deleteCategoryItem(item.id)}>Delete</button>
       {Products}
     </div>
   );
