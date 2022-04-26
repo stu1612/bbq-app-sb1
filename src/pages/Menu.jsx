@@ -12,7 +12,7 @@ export default function Menu() {
   // safeguard
   if (status === 0) return <Loader />;
   if (status === 2) return <p>Error ..</p>;
-  if (categories === undefined) return <ErrorMessage />;
+  if (categories === undefined) return <p>Error ..</p>;
 
   // components
   const Categories =

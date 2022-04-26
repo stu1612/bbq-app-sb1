@@ -41,14 +41,21 @@ export default function Category() {
   if (status === 0) return <Loader />;
   if (status === 2) return <p>Error ..</p>;
 
-  const Products =
-    products &&
-    products.map((item) => <ProductItem key={item.id} item={item} />);
+  const mappedProducts = products.map((item) => (
+    <ProductItem key={item.id} item={item} />
+  ));
+
+  const Products = products && mappedProducts;
+
+  const noProducts = products.length === 0 && (
+    <p>There are no products at this time</p>
+  );
 
   return (
     <div>
       <h2>Category - {title}</h2>
       {Products}
+      {noProducts}
     </div>
   );
 }
