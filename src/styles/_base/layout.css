@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;1,200&family=Rubik:ital,wght@0,800;1,400&display=swap");
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: auto;
+  font-family: "Roboto Mono", monospace, Arial, Helvetica, sans-serif;
+}
+
+a,
+li {
+  list-style: none;
+  color: var(--cl-light);
+  text-decoration: none;
+}
+
+input,
+textarea {
+  outline: none;
+}
+
+button,
+input[type="submit"] {
+  outline: none;
+  border: none;
+}
+
+button:hover,
+input[type="submit"] {
+  cursor: pointer;
+}

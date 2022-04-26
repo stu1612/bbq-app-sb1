@@ -1,0 +1,11 @@
+.container-768 {
+  width: min(95%, 768px);
+}
+
+.container-920 {
+  width: min(95%, 920px);
+}
+
+.container-1200 {
+  width: min(95%, 1200px);
+}

@@ -1,8 +1,16 @@
-.input-field {
-  padding: 10px;
-}
+@import-normalize;
 
-.input {
-  display: flex;
-  flex-direction: column;
-}
+/* base */
+@import "./_base/layout.css";
+@import "./_base/colors.css";
+@import "./_base/typography.css";
+@import "./_base/sizes.css";
+
+/* atoms */
+@import "./atoms/button.css";
+@import "./atoms/input.css";
+
+/* molecules */
+@import "./molecules/containers.css";
+
+/* templates */
