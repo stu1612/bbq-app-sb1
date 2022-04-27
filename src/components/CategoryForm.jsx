@@ -1,18 +1,17 @@
+// npm
+import { useContext } from "react";
 // components
 import InputField from "./InputField";
 import InputFile from "./InputFile";
+import TextArea from "./TextArea";
 // files
+import { AppContext } from "../context/AppContext";
 import formField from "../data/categoryInput.json";
 import validateString from "../scripts/validateString";
 
-export default function CategoryForm({
-  titleState,
-  describeState,
-  createItem,
-  onImageSelect,
-}) {
-  const [title, setTitle] = titleState;
-  const [description, setDescription] = describeState;
+export default function CategoryForm({ createItem, onImageSelect }) {
+  const { title, setTitle, categoryInfo, setCategoryInfo } =
+    useContext(AppContext);
   return (
     <div className="form">
       <form onSubmit={createItem}>
@@ -21,9 +20,9 @@ export default function CategoryForm({
           state={[title, setTitle]}
           validation={validateString}
         />
-        <InputField
+        <TextArea
           setup={formField.description}
-          state={[description, setDescription]}
+          state={[categoryInfo, setCategoryInfo]}
           validation={validateString}
         />
         <InputFile onImageSelect={onImageSelect} />

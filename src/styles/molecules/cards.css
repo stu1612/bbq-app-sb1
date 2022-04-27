@@ -1,6 +1,7 @@
 .card-item {
   margin: 5rem auto;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
   width: min(95%, 760px);
   box-shadow: 0 13px 29px -18px rgb(255 255 255 / 60%);
   padding: 2rem;

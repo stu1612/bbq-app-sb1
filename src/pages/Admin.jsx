@@ -10,7 +10,6 @@ import ErrorMessage from "../components/ErrorMessage";
 import Loader from "../components/Loader";
 
 export default function Admin() {
-  // const [categories, setCategories] = useState([]);
   const [status, setStatus] = useState(0);
   const { categories, setCategories } = useContext(AppContext);
 

@@ -10,12 +10,16 @@ import CategoryForm from "../components/CategoryForm";
 import Loader from "../components/Loader";
 
 export default function AdminCategory() {
-  const { categories, setCategories } = useContext(AppContext);
-  // const [categories, setCategories] = useState([]);
-  const [description, setDescription] = useState("");
-  const [file, setFile] = useState(null);
+  const {
+    categories,
+    setCategories,
+    resetForm,
+    title,
+    file,
+    setFile,
+    categoryInfo,
+  } = useContext(AppContext);
   const [status, setStatus] = useState(1);
-  const [title, setTitle] = useState("");
 
   // properties
   const path = "Menu/Dishes/content";
@@ -25,7 +29,7 @@ export default function AdminCategory() {
     setStatus(0);
     const payload = {
       title: title,
-      description: description,
+      description: categoryInfo,
       imgURL: "",
     };
 
@@ -52,21 +56,8 @@ export default function AdminCategory() {
     setFile(file);
   }
 
-  function resetForm() {
-    setTitle("");
-    setDescription("");
-    setFile(null);
-  }
-
   // safeguard
   if (status === 0) return <Loader />;
 
-  return (
-    <CategoryForm
-      titleState={[title, setTitle]}
-      describeState={[description, setDescription]}
-      onImageSelect={onImageSelect}
-      createItem={createItem}
-    />
-  );
+  return <CategoryForm onImageSelect={onImageSelect} createItem={createItem} />;
 }

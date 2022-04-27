@@ -1,5 +1,5 @@
 // npm
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 // firebase
 import { readCollection, deleteDocument } from "../firebase/firestore";
 
@@ -7,33 +7,19 @@ export const AppContext = createContext();
 
 export default function AppContextProvider({ children }) {
   const [categories, setCategories] = useState([]);
-  const [status, setStatus] = useState(0);
   const [products, setProducts] = useState([]);
   // product form
-  const [recipe_1, setRecipe_1] = useState("");
-  const [recipe_2, setRecipe_2] = useState("");
-  const [recipe_3, setRecipe_3] = useState("");
-  const [recipe_4, setRecipe_4] = useState("");
-  const [recipe_5, setRecipe_5] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [categoryInfo, setCategoryInfo] = useState("");
+  const [optionValue, setOptionValue] = useState("");
+  const [name, setName] = useState("");
+  const [productInfo, setProductInfo] = useState("");
+  const [price, setPrice] = useState("0");
+  const [recipes, setRecipes] = useState("");
+  const [file, setFile] = useState(null);
 
   const CategoryPath = "Menu/Dishes/content/";
-
-  // useEffect(() => {
-  //   async function loadCategories(path) {
-  //     const itemsData = await readCollection(path);
-  //     setCategories(itemsData);
-  //     setStatus(1);
-  //   }
-  //   loadCategories(CategoryPath);
-  // }, []);
-
-  // async function loadCategories(path, setter, getter) {
-  //   const itemsData = await readCollection(path);
-  //       setter(itemsData);
-  //       setStatus(1);
-  //     }
-  //     loadCategories(CategoryPath);
-  // }
 
   async function loadProducts(path) {
     const itemsData = await readCollection(path);
@@ -54,12 +40,14 @@ export default function AppContextProvider({ children }) {
     return setProducts(deleteItem);
   }
 
-  function resetRecipes() {
-    setRecipe_1("");
-    setRecipe_2("");
-    setRecipe_3("");
-    setRecipe_4("");
-    setRecipe_5("");
+  function resetForm() {
+    setTitle("");
+    setCategoryInfo("");
+    setName("");
+    setPrice("0");
+    setProductInfo("");
+    setRecipes("");
+    setFile(null);
   }
 
   return (
@@ -67,23 +55,30 @@ export default function AppContextProvider({ children }) {
       value={{
         categories,
         setCategories,
-        status,
-        deleteCategoryItem,
         products,
+        title,
+        setTitle,
+        name,
+        setName,
+        optionValue,
+        setOptionValue,
+        price,
+        setPrice,
+        recipes,
+        setRecipes,
+        file,
+        setFile,
+        description,
+        setDescription,
+        categoryInfo,
+        setCategoryInfo,
+        productInfo,
+        setProductInfo,
         setProducts,
         loadProducts,
+        deleteCategoryItem,
         deleteProductItem,
-        recipe_1,
-        recipe_2,
-        recipe_3,
-        recipe_4,
-        recipe_5,
-        setRecipe_1,
-        setRecipe_2,
-        setRecipe_3,
-        setRecipe_4,
-        setRecipe_5,
-        resetRecipes,
+        resetForm,
       }}
     >
       {children}

@@ -6,13 +6,7 @@
     "required": true,
     "type": "text"
   },
-  "description": {
-    "autoFocus": false,
-    "label": "Description of the product item",
-    "placeholder": "Ex: description of your item",
-    "required": true,
-    "type": "text"
-  },
+
   "price": {
     "autoFocus": false,
     "label": "Price of item",
@@ -21,38 +15,17 @@
     "min": 1,
     "max": 9999
   },
-  "recipe_1": {
+  "description": {
     "autoFocus": false,
-    "label": "Ingredient 1",
-    "placeholder": "Ex: Chicken",
-    "required": false,
+    "label": "Description of the product item",
+    "placeholder": "Ex: description of your item",
+    "required": true,
     "type": "text"
   },
-  "recipe_2": {
+  "recipe": {
     "autoFocus": false,
-    "label": "Ingredient 2",
-    "placeholder": "Ex: Chips",
-    "required": false,
-    "type": "text"
-  },
-  "recipe_3": {
-    "autoFocus": false,
-    "label": "Ingredient 3",
-    "placeholder": "Ex: BBQ sauce",
-    "required": false,
-    "type": "text"
-  },
-  "recipe_4": {
-    "autoFocus": false,
-    "label": "Ingredient 4",
-    "placeholder": "Ex: Salad",
-    "required": false,
-    "type": "text"
-  },
-  "recipe_5": {
-    "autoFocus": false,
-    "label": "Ingredient 5",
-    "placeholder": "Ex: Coleslaw",
+    "label": "Ingredients",
+    "placeholder": "Ex: Chicken, sauce, chips",
     "required": false,
     "type": "text"
   }

@@ -11,16 +11,19 @@ import { createDocument } from "../firebase/firestore";
 import { createFile } from "../firebase/cloudStorage";
 
 export default function AdminProduct() {
-  const { resetRecipes, recipe_1, recipe_2, recipe_3, recipe_4, recipe_5 } =
-    useContext(AppContext);
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("0");
-  const [file, setFile] = useState(null);
-  const [optionValue, setOptionValue] = useState("");
+  const {
+    name,
+    price,
+    productInfo,
+    file,
+    setFile,
+    recipes,
+    optionValue,
+    resetForm,
+  } = useContext(AppContext);
+
   const [products, setProducts] = useState([]);
   const [status, setStatus] = useState(1);
-
   // property
   const path = `Menu/Dishes/content/${optionValue}/content`;
 
@@ -30,13 +33,9 @@ export default function AdminProduct() {
 
     const payload = {
       name: name,
-      description: description,
+      description: productInfo,
       price: price,
-      recipe_1: recipe_1,
-      recipe_2: recipe_2,
-      recipe_3: recipe_3,
-      recipe_4: recipe_4,
-      recipe_5: recipe_5,
+      recipes: recipes,
       imgURL: "",
     };
 
@@ -54,7 +53,6 @@ export default function AdminProduct() {
     payload.id = documentId;
     setProducts([...products, payload]);
     resetForm();
-    resetRecipes();
     setStatus(1);
   }
 
@@ -63,24 +61,8 @@ export default function AdminProduct() {
     setFile(file);
   }
 
-  function resetForm() {
-    setName("");
-    setDescription("");
-    setPrice(0);
-    setFile(null);
-  }
-
   // safeguard
   if (status === 0) return <Loader />;
 
-  return (
-    <ProductForm
-      nameState={[name, setName]}
-      describeState={[description, setDescription]}
-      priceState={[price, setPrice]}
-      optionState={[optionValue, setOptionValue]}
-      createItem={createItem}
-      onImageSelect={onImageSelect}
-    />
-  );
+  return <ProductForm createItem={createItem} onImageSelect={onImageSelect} />;
 }

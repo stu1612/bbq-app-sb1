@@ -2,6 +2,7 @@
 import { useContext } from "react";
 // components
 import InputField from "../components/InputField";
+import TextArea from "./TextArea";
 import SelectField from "./SelectField";
 import InputFile from "./InputFile";
 // files
@@ -11,30 +12,19 @@ import { AppContext } from "../context/AppContext";
 // data
 import formField from "../data/productInput.json";
 
-export default function ProductForm({
-  optionState,
-  nameState,
-  describeState,
-  priceState,
-  createItem,
-  onImageSelect,
-}) {
+export default function ProductForm({ createItem, onImageSelect }) {
   const {
-    recipe_1,
-    recipe_2,
-    recipe_3,
-    recipe_4,
-    recipe_5,
-    setRecipe_1,
-    setRecipe_2,
-    setRecipe_3,
-    setRecipe_4,
-    setRecipe_5,
+    name,
+    setName,
+    recipes,
+    setRecipes,
+    price,
+    setPrice,
+    optionValue,
+    setOptionValue,
+    productInfo,
+    setProductInfo,
   } = useContext(AppContext);
-  const [name, setName] = nameState;
-  const [description, setDescription] = describeState;
-  const [price, setPrice] = priceState;
-  const [optionValue, setOptionValue] = optionState;
   return (
     <form onSubmit={createItem} className="form">
       <SelectField state={[optionValue, setOptionValue]} />
@@ -44,40 +34,21 @@ export default function ProductForm({
         validation={validateString}
       />
       <InputField
-        setup={formField.description}
-        state={[description, setDescription]}
-        validation={validateString}
-      />
-      <InputField
         setup={formField.price}
         state={[price, setPrice]}
         validation={validateNumber}
       />
-      <InputField
-        setup={formField.recipe_1}
-        state={[recipe_1, setRecipe_1]}
+      <TextArea
+        setup={formField.recipe}
+        state={[recipes, setRecipes]}
         validation={validateString}
       />
-      <InputField
-        setup={formField.recipe_2}
-        state={[recipe_2, setRecipe_2]}
+      <TextArea
+        setup={formField.description}
+        state={[productInfo, setProductInfo]}
         validation={validateString}
       />
-      <InputField
-        setup={formField.recipe_3}
-        state={[recipe_3, setRecipe_3]}
-        validation={validateString}
-      />
-      <InputField
-        setup={formField.recipe_4}
-        state={[recipe_4, setRecipe_4]}
-        validation={validateString}
-      />
-      <InputField
-        setup={formField.recipe_5}
-        state={[recipe_5, setRecipe_5]}
-        validation={validateString}
-      />
+
       <InputFile onImageSelect={onImageSelect} />
       <button type="submit" className="btn btn-primary">
         Submit
