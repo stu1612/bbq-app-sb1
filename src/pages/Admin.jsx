@@ -1,15 +1,29 @@
 // npm
-import { useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 // files
 import { AppContext } from "../context/AppContext";
+import { readCollection } from "../firebase/firestore";
 // components
 import AdminItems from "../components/AdminItems";
 import ErrorMessage from "../components/ErrorMessage";
 import Loader from "../components/Loader";
 
 export default function Admin() {
-  const { categories, status } = useContext(AppContext);
+  // const [categories, setCategories] = useState([]);
+  const [status, setStatus] = useState(0);
+  const { categories, setCategories } = useContext(AppContext);
+
+  const CategoryPath = "Menu/Dishes/content/";
+
+  useEffect(() => {
+    async function loadCategories(path) {
+      const itemsData = await readCollection(path);
+      setCategories(itemsData);
+      setStatus(1);
+    }
+    loadCategories(CategoryPath);
+  }, [setCategories]);
 
   // components
   const Categories =

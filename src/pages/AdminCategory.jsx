@@ -11,6 +11,7 @@ import Loader from "../components/Loader";
 
 export default function AdminCategory() {
   const { categories, setCategories } = useContext(AppContext);
+  // const [categories, setCategories] = useState([]);
   const [description, setDescription] = useState("");
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState(1);

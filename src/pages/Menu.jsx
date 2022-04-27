@@ -1,15 +1,27 @@
 // npm
-import { useContext } from "react";
-import { AppContext } from "../context/AppContext";
+import { useState, useEffect } from "react";
 // components
 import CategoryItem from "../components/CategoryItem";
 import ErrorMessage from "../components/ErrorMessage";
 import Loader from "../components/Loader";
+// files
+import { readCollection } from "../firebase/firestore";
 // images
 import hero from "../assets/images/hero_2.jpg";
 
 export default function Menu() {
-  const { status, categories } = useContext(AppContext);
+  const [categories, setCategories] = useState([]);
+  const [status, setStatus] = useState(0);
+  const CategoryPath = "Menu/Dishes/content/";
+
+  useEffect(() => {
+    async function loadCategories(path) {
+      const itemsData = await readCollection(path);
+      setCategories(itemsData);
+      setStatus(1);
+    }
+    loadCategories(CategoryPath);
+  }, []);
 
   // safeguard
   if (status === 0) return <Loader />;

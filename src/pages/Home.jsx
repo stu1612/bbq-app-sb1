@@ -1,8 +1,8 @@
 // npm
-import { useState, useContext } from "react";
+import { useState, useEffect } from "react";
 // files
+import { readCollection } from "../firebase/firestore";
 import jsonContent from "../data/homeContent.json";
-import { AppContext } from "../context/AppContext";
 // components
 import Loader from "../components/Loader";
 import ContentItem from "../components/ContentItem";
@@ -12,8 +12,19 @@ import ErrorMessage from "../components/ErrorMessage";
 import hero from "../assets/images/hero.jpg";
 
 export default function Home() {
-  const { categories } = useContext(AppContext);
-  const [status, setStatus] = useState(1);
+  const [categories, setCategories] = useState([]);
+  const [status, setStatus] = useState(0);
+
+  const CategoryPath = "Menu/Dishes/content/";
+
+  useEffect(() => {
+    async function loadCategories(path) {
+      const itemsData = await readCollection(path);
+      setCategories(itemsData);
+      setStatus(1);
+    }
+    loadCategories(CategoryPath);
+  }, []);
 
   // safeguard
   if (status === 0) return <Loader />;

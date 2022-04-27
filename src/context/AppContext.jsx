@@ -18,14 +18,22 @@ export default function AppContextProvider({ children }) {
 
   const CategoryPath = "Menu/Dishes/content/";
 
-  useEffect(() => {
-    async function loadCategories(path) {
-      const itemsData = await readCollection(path);
-      setCategories(itemsData);
-      setStatus(1);
-    }
-    loadCategories(CategoryPath);
-  }, []);
+  // useEffect(() => {
+  //   async function loadCategories(path) {
+  //     const itemsData = await readCollection(path);
+  //     setCategories(itemsData);
+  //     setStatus(1);
+  //   }
+  //   loadCategories(CategoryPath);
+  // }, []);
+
+  // async function loadCategories(path, setter, getter) {
+  //   const itemsData = await readCollection(path);
+  //       setter(itemsData);
+  //       setStatus(1);
+  //     }
+  //     loadCategories(CategoryPath);
+  // }
 
   async function loadProducts(path) {
     const itemsData = await readCollection(path);

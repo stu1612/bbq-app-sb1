@@ -1,8 +1,8 @@
 // npm
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
 // files
-import { AppContext } from "../context/AppContext";
+import { readCollection } from "../firebase/firestore";
 // components
 import Loader from "../components/Loader";
 import ProductItem from "../components/ProductItem";
@@ -10,21 +10,30 @@ import ProductItem from "../components/ProductItem";
 import hero from "../assets/images/hero_3.jpg";
 
 export default function Category() {
-  const { products, loadProducts } = useContext(AppContext);
+  // const { products, loadProducts } = useContext(AppContext);
+  const [products, setProducts] = useState([]);
   const [status, setStatus] = useState(0);
 
   // properties
   const { title } = useParams();
   const location = useLocation();
   const routeId = location.state.data.id;
-  console.log(routeId);
 
-  const path = `Menu/Dishes/content/${routeId}/content`;
+  // const path = `Menu/Dishes/content/${routeId}/content`;
+
+  // useEffect(() => {
+  //   loadProducts(path);
+  //   setStatus(1);
+  // }, [loadProducts, path]);
 
   useEffect(() => {
-    loadProducts(path);
-    setStatus(1);
-  }, [loadProducts, path]);
+    async function loadProducts(path) {
+      const itemsData = await readCollection(path);
+      setProducts(itemsData);
+      setStatus(1);
+    }
+    loadProducts(`Menu/Dishes/content/${routeId}/content`);
+  }, [routeId]);
 
   // safeguard
   if (status === 0) return <Loader />;
