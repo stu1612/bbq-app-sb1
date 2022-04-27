@@ -48,7 +48,6 @@ export default function ProductForm({ createItem, onImageSelect }) {
         state={[productInfo, setProductInfo]}
         validation={validateString}
       />
-
       <InputFile onImageSelect={onImageSelect} />
       <button type="submit" className="btn btn-primary">
         Submit

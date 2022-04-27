@@ -17,11 +17,7 @@ export default function ProductItem({ item }) {
   return (
     <div className="card-item">
       <div className="card-image">
-        <img
-          src={imgURL}
-          alt={name}
-          style={{ height: "200px", width: "200px", objectFit: "cover" }}
-        />
+        <img src={imgURL} alt={name} />
       </div>
       <div className="card-content">
         <h2>{name}</h2>

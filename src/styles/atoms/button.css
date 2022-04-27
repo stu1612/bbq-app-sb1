@@ -23,9 +23,9 @@
 }
 
 .btn-secondary {
-  background-color: transparent;
-  border-color: var(--cl-btn-primary);
+  background-color: white;
   color: var(--cl-dark);
+  border: 1px solid white;
 }
 
 .btn-secondary:hover {

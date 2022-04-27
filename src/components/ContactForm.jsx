@@ -13,7 +13,9 @@ export default function ContactForm() {
       <InputField setup={formField.name} state={[name, setName]} />
       <InputField setup={formField.date} state={[date, setDate]} />
       <InputField setup={formField.time} state={[time, setTime]} />
-      <button className="btn btn-primary">Submit</button>
+      <div className="spacer">
+        <button className="btn btn-primary">Submit</button>
+      </div>
     </form>
   );
 }

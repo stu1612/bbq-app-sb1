@@ -13,7 +13,7 @@ export default function CategoryForm({ createItem, onImageSelect }) {
   const { title, setTitle, categoryInfo, setCategoryInfo } =
     useContext(AppContext);
   return (
-    <div className="form">
+    <div className="contact-form">
       <form onSubmit={createItem}>
         <InputField
           setup={formField.title}

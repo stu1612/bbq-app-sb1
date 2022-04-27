@@ -10,3 +10,8 @@
 .content-p {
   margin: 1.5rem 0;
 }
+
+.no-items {
+  margin: 10rem auto;
+  text-align: center;
+}

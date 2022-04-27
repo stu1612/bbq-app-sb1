@@ -1,5 +1,5 @@
 .navigation {
-  background: black;
+  background: #181818;
   width: 100%;
   height: 10rem;
   position: -webkit-sticky;
@@ -7,7 +7,7 @@
   top: 0;
   overflow: hidden;
   z-index: 10;
-  box-shadow: 0 -12px 50px -1px rgb(255 255 255 / 60%);
+  box-shadow: 0 -12px 50px -1px rgba(0, 0, 0, 0.6);
 }
 
 .nav {
@@ -26,4 +26,14 @@
 
 .links a {
   padding: 0 2rem;
+}
+
+.admin {
+  margin: 10rem 5rem;
+}
+
+.form-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }

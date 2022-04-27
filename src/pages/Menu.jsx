@@ -35,7 +35,7 @@ export default function Menu() {
   const Categories = categories && mappedCategories;
 
   return (
-    <section className="menu" id="menu">
+    <section className="menu">
       <section className="hero">
         <img src={hero} alt="ribs cooking on bbq" className="hero-image" />
         <h1 className="title">menu</h1>

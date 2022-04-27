@@ -9,6 +9,7 @@
 /* atoms */
 @import "./atoms/button.css";
 @import "./atoms/input.css";
+@import "./atoms/loader.css";
 
 /* molecules */
 @import "./molecules/containers.css";

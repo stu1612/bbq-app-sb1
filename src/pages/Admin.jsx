@@ -35,21 +35,23 @@ export default function Admin() {
   if (categories === undefined) return <ErrorMessage />;
 
   return (
-    <div>
-      <nav>
-        <Link to="/admin" className="btn btn-primary">
+    <div className="admin">
+      <nav className="form-nav">
+        <Link to="/admin" className="btn btn-secondary">
           Admin console
         </Link>
-        <Link to="categoryForm" className="btn btn-primary">
+        <Link to="categoryForm" className="btn btn-secondary">
           Add Category
         </Link>
-        <Link to="productForm" className="btn btn-primary">
+        <Link to="productForm" className="btn btn-secondary">
           Add Product
         </Link>
       </nav>
       <Outlet />
       <div>
-        <h3>Categories</h3>
+        <div className="spacer">
+          <h2>Categories</h2>
+        </div>
         {Categories}
       </div>
     </div>

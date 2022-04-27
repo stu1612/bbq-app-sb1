@@ -18,9 +18,8 @@ export default function AdminCategoryItem({ item }) {
   }
 
   return (
-    <div>
+    <div className="form-category-item">
       <h3>{title}</h3>
-      <p>{id}</p>
       <button
         onClick={() => deleteCategoryItem(item.id)}
         className="btn btn-primary"
@@ -29,15 +28,16 @@ export default function AdminCategoryItem({ item }) {
       </button>
       <button
         onClick={() => loadData(`Menu/Dishes/content/${id}/content/`)}
-        className="btn btn-primary"
+        className="btn btn-secondary"
       >
-        show
+        {!isOpen ? "show" : "hide"}
       </button>
       {isOpen
         ? products.map((item) => (
-            <div key={item.id}>
+            <div key={item.id} className="form-product-item">
               {item.name}
               <button
+                className="btn btn-primary"
                 onClick={() =>
                   deleteProductItem(
                     `Menu/Dishes/content/${id}/content/`,

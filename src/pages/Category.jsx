@@ -46,7 +46,7 @@ export default function Category() {
   const Products = products && mappedProducts;
 
   const noProducts = products.length === 0 && (
-    <p>There are no products at this time</p>
+    <p className="no-items">There are no products at this time</p>
   );
 
   return (
