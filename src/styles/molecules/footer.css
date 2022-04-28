@@ -5,7 +5,9 @@ footer {
 
 .social-footer {
   display: flex;
+  flex-direction: column;
   margin: 0 auto;
+  height: 100px;
   width: min(95%, 1200px);
   align-items: center;
   justify-content: space-between;
@@ -16,7 +18,13 @@ footer {
 }
 
 .copyright {
-  margin: 0 auto;
+  margin: 2rem auto;
   display: flex;
   justify-content: center;
+}
+
+@media (min-width: 760px) {
+  .social-footer {
+    flex-direction: row;
+  }
 }

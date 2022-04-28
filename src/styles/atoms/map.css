@@ -1,0 +1,6 @@
+.map-container {
+  width: min(95%, 920px);
+  height: 30vh;
+  border: 0;
+  margin: 0 auto;
+}

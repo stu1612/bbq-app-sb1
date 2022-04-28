@@ -14,7 +14,7 @@ export default function CategoryForm({ createItem, onImageSelect }) {
     useContext(AppContext);
   return (
     <div className="contact-form">
-      <form onSubmit={createItem}>
+      <form onSubmit={createItem} className="admin-form">
         <InputField
           setup={formField.title}
           state={[title, setTitle]}

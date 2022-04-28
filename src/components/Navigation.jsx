@@ -1,10 +1,8 @@
 // npm
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { GiAnimalSkull } from "react-icons/gi";
 
 export default function Navigation() {
-  const navigate = useNavigate();
-
   return (
     <div className="navigation">
       <nav className="nav">

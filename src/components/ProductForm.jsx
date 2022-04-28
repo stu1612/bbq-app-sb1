@@ -26,32 +26,34 @@ export default function ProductForm({ createItem, onImageSelect }) {
     setProductInfo,
   } = useContext(AppContext);
   return (
-    <form onSubmit={createItem} className="form">
-      <SelectField state={[optionValue, setOptionValue]} />
-      <InputField
-        setup={formField.name}
-        state={[name, setName]}
-        validation={validateString}
-      />
-      <InputField
-        setup={formField.price}
-        state={[price, setPrice]}
-        validation={validateNumber}
-      />
-      <TextArea
-        setup={formField.recipe}
-        state={[recipes, setRecipes]}
-        validation={validateString}
-      />
-      <TextArea
-        setup={formField.description}
-        state={[productInfo, setProductInfo]}
-        validation={validateString}
-      />
-      <InputFile onImageSelect={onImageSelect} />
-      <button type="submit" className="btn btn-primary">
-        Submit
-      </button>
-    </form>
+    <div className="contact-form">
+      <form onSubmit={createItem} className="admin-form">
+        <SelectField state={[optionValue, setOptionValue]} />
+        <InputField
+          setup={formField.name}
+          state={[name, setName]}
+          validation={validateString}
+        />
+        <InputField
+          setup={formField.price}
+          state={[price, setPrice]}
+          validation={validateNumber}
+        />
+        <TextArea
+          setup={formField.recipe}
+          state={[recipes, setRecipes]}
+          validation={validateString}
+        />
+        <TextArea
+          setup={formField.description}
+          state={[productInfo, setProductInfo]}
+          validation={validateString}
+        />
+        <InputFile onImageSelect={onImageSelect} />
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
+      </form>
+    </div>
   );
 }

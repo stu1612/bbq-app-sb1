@@ -1,6 +1,5 @@
 .contact-form {
   background-color: rgb(79, 79, 79);
-  padding: 5rem 2rem;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -9,19 +8,28 @@
   margin: 5rem 0;
 }
 
-.input-field {
-  margin: 1rem 0;
+.admin-form {
+  padding: 1rem;
 }
 
 .input {
-  width: 250px;
-  margin-left: 1rem;
+  width: 80vw;
   background-color: #181818;
   color: white;
+  margin: 5px 0;
 }
 
 label {
-  font-size: 16px;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  margin: 2rem auto;
+  text-align: left;
+}
+
+.error {
+  color: red;
+  background-color: white;
 }
 
 .spacer,
@@ -35,4 +43,14 @@ label {
 
 .form-product-item {
   transition: all 2s ease-in-out;
+}
+
+@media (min-width: 760px) {
+  .contact-form {
+    padding: 5rem 2rem;
+    margin: 10rem 0;
+  }
+  .input {
+    width: 300px;
+  }
 }

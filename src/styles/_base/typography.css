@@ -2,7 +2,7 @@ h1 {
   font-size: clamp(3.5em, 10vw, 10em);
   font-family: "Rubik", sans-serif;
   position: absolute;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 50%);
   left: 50%;
   bottom: 50%;
   text-transform: uppercase;
@@ -41,9 +41,6 @@ p {
 }
 
 @media (min-width: 760px) {
-  h1 {
-    bottom: 0;
-  }
   h3 {
     font-size: 26px;
   }

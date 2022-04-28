@@ -12,10 +12,10 @@ export default function Product() {
         <img src={imgURL} alt={name} />
         <h1>{name}</h1>
       </section>
-      <section className="content-item">
+      <section className="content-contact container-920">
+        <h3>{price} sek</h3>
         <p>{description}</p>
-        <p>{price} sek</p>
-        <div>{recipes}</div>
+        <p>Ingredients: {recipes}</p>
         <Link to={-1} className="btn btn-primary">
           Go back
         </Link>
